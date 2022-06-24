@@ -1,0 +1,137 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: VCU DU2 DU1 OBCharger1 BMS DCDC GTW THC
+VAL_TABLE_ BMS_Status 5 "Error" 4 "Precharge" 3 "Charge" 2 "Drive" 1 "Ready" 0 "Boot" ;
+VAL_TABLE_ Output_States 1 "Output On" 0 "Output Off" ;
+VAL_TABLE_ AlarmWarningValues 3 "Not Supported" 2 "InActive" 1 "Active" 0 "Not Supported" ;
+VAL_TABLE_ PlugStates 2 "Plugged In and Charging" 1 "Plugged In" 0 "Not Plugged In" ;
+VAL_TABLE_ ModeStates 6 "Vehicle in Error State" 5 "Vehicle in Reverse" 4 "Vehicle in Drive" 3 "Vehicle Charging" 2 "Vehicle Stationairy and Plugged" 1 "Vehicle Stationairy Key On" 0 "Vehicle Parked and Off" ;
+VAL_TABLE_ IgnitionStates 1 "Ignition on KL15 high" 0 "Ignition off KL15 Low" ;
+VAL_TABLE_ FalseTrue 1 "Active" 0 "Not Set" ;
+
+
+BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
+ SG_ BMS_Warning_UnderTemp : 0|2@1+ (1,0) [0|3] "" Vector__XXX
+
+BO_ 882 BMSinfo: 8 Vector__XXX
+ SG_ BMS_Status : 32|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ BMS_LowOut4 : 19|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS_LowOut3 : 18|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS_LowOut2 : 17|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS_HighOut1 : 24|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS_HighOut4 : 27|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS_HighOut3 : 26|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS_HighOut2 : 25|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS_LowOut1 : 16|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS_Num_Modules : 0|16@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 883 BMS_HighLowValues: 8 Vector__XXX
+ SG_ BMS_LowTemp : 32|16@1+ (1,0) [0|65535] "Kelvin" Vector__XXX
+ SG_ BMS_HighTemp : 48|16@1+ (1,0) [0|65535] "Kelvin" Vector__XXX
+ SG_ BMS_LowCellVoltage : 0|16@1+ (1,0) [0|65535] "mV" Vector__XXX
+ SG_ BMS_HighCellVoltage : 16|16@1+ (1,0) [0|65535] "mV" Vector__XXX
+
+BO_ 2550588916 ChargerControl: 8 Vector__XXX
+
+BO_ 854 BatteryStatus: 7 BMS
+ SG_ HvBatteryTemp : 32|16@1- (0.1,0) [-3276.8|3276.7] "C" Vector__XXX
+ SG_ HvBatteryCurrent : 16|16@1- (0.1,0) [-3276.8|3276.7] "A" Vector__XXX
+ SG_ HvBatteryVoltage : 0|16@1+ (0.01,0) [0|655.35] "V" Vector__XXX
+
+BO_ 853 BmsSOC: 8 BMS
+ SG_ HvBatterySOChighdef : 32|16@1+ (0.01,0) [0|655.35] "%" Vector__XXX
+ SG_ HvBatterySOH : 16|16@1+ (1,0) [0|65535] "%" Vector__XXX
+ SG_ HvBatterySOC : 0|16@1+ (1,0) [0|65535] "%" Vector__XXX
+
+BO_ 849 BmsLimits: 8 BMS
+ SG_ chargeVoltageLimit : 0|16@1+ (0.1,0) [0|6553.5] "V" Vector__XXX
+ SG_ DischargeCurrentLimit : 32|16@1- (0.1,0) [0|6553.5] "A" Vector__XXX
+ SG_ DischargeVoltageLimit : 48|16@1+ (0.1,0) [0|6553.5] "V" Vector__XXX
+ SG_ ChargeCurrentLimit : 16|16@1- (0.1,0) [0|6553.5] "A" Vector__XXX
+
+BO_ 858 BMS_AlarmWarning: 8 Vector__XXX
+ SG_ BMS_Warning_CellGap : 56|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ BMS_Warning_BmsComms : 54|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ BMS_Alarm_UnderTemp : 8|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ BMS_Alarm_BmsComms : 22|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ BMS_Warning_UnderVoltage : 36|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ BMS_Warning_UnderTemp : 40|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ BMS_Warning_OverVoltage : 34|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ BMS_Warning_OverTemp : 38|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ BMS_Alarm_CellGap : 24|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ BMS_Alarm_UnderVoltage : 4|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ BMS_Alarm_OverVoltage : 2|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ BMS_Alarm_OverTemp : 6|2@1+ (1,0) [0|3] "" Vector__XXX
+
+
+
+CM_ BO_ 3221225472 "This is a message for not used signals, created by Vector CANdb++ DBC OLE DB Provider.";
+CM_ SG_ 3221225472 BMS_Warning_UnderTemp "Set when a temperature sensor reading exceeds the Overtemperature Setpoint";
+CM_ SG_ 858 BMS_Warning_CellGap "Set when the difference between min and max cell voltage exceeds the Cell Voltage Difference Setpoint";
+CM_ SG_ 858 BMS_Alarm_UnderTemp "Set when a temperature sensor reading exceeds the Overtemperature Setpoint";
+CM_ SG_ 858 BMS_Warning_UnderVoltage "Set when a cell reading is within Voltage Warning Offset of the Under Voltage Setpoint";
+CM_ SG_ 858 BMS_Warning_UnderTemp "Set when a temperature reading is within Temp Warning Offset of the Under Temperature Setpoint";
+CM_ SG_ 858 BMS_Warning_OverVoltage "Set when a cell reading is within Voltage Warning Offset of the Over Voltage Setpoint";
+CM_ SG_ 858 BMS_Warning_OverTemp "Set when a temperature reading is within Temp Warning Offset of the Over Temperature Setpoint";
+CM_ SG_ 858 BMS_Alarm_CellGap "Set when the difference between min and max cell voltage exceeds the Cell Voltage Difference Setpoint";
+CM_ SG_ 858 BMS_Alarm_UnderVoltage "Set when a cell reading drops below the Undervoltage Setpoint";
+CM_ SG_ 858 BMS_Alarm_OverVoltage "Set when a cell reading exceeds the Over Voltage Setpoint";
+CM_ SG_ 858 BMS_Alarm_OverTemp "Set when a temperature sensor reading exceeds the Overtemperature Setpoint";
+BA_DEF_  "BusType" STRING ;
+BA_DEF_DEF_  "BusType" "CAN";
+VAL_ 3221225472 BMS_Warning_UnderTemp 3 "Not Supported" 2 "InActive" 1 "Active" 0 "Not Supported" ;
+VAL_ 882 BMS_Status 5 "Error" 4 "Precharge" 3 "Charge" 2 "Drive" 1 "Ready" 0 "Boot" ;
+VAL_ 882 BMS_LowOut4 1 "Output On" 0 "Output Off" ;
+VAL_ 882 BMS_LowOut3 1 "Output On" 0 "Output Off" ;
+VAL_ 882 BMS_LowOut2 1 "Output On" 0 "Output Off" ;
+VAL_ 882 BMS_HighOut1 1 "Output On" 0 "Output Off" ;
+VAL_ 882 BMS_HighOut4 1 "Output On" 0 "Output Off" ;
+VAL_ 882 BMS_HighOut3 1 "Output On" 0 "Output Off" ;
+VAL_ 882 BMS_HighOut2 1 "Output On" 0 "Output Off" ;
+VAL_ 882 BMS_LowOut1 1 "Output On" 0 "Output Off" ;
+VAL_ 858 BMS_Warning_CellGap 3 "Not Supported" 2 "InActive" 1 "Active" 0 "Not Supported" ;
+VAL_ 858 BMS_Warning_BmsComms 3 "Not Supported" 2 "InActive" 1 "Active" 0 "Not Supported" ;
+VAL_ 858 BMS_Alarm_UnderTemp 3 "Not Supported" 2 "InActive" 1 "Active" 0 "Not Supported" ;
+VAL_ 858 BMS_Alarm_BmsComms 3 "Not Supported" 2 "InActive" 1 "Active" 0 "Not Supported" ;
+VAL_ 858 BMS_Warning_UnderVoltage 3 "Not Supported" 2 "InActive" 1 "Active" 0 "Not Supported" ;
+VAL_ 858 BMS_Warning_UnderTemp 3 "Not Supported" 2 "InActive" 1 "Active" 0 "Not Supported" ;
+VAL_ 858 BMS_Warning_OverVoltage 3 "Not Supported" 2 "InActive" 1 "Active" 0 "Not Supported" ;
+VAL_ 858 BMS_Warning_OverTemp 3 "Not Supported" 2 "InActive" 1 "Active" 0 "Not Supported" ;
+VAL_ 858 BMS_Alarm_CellGap 3 "Not Supported" 2 "InActive" 1 "Active" 0 "Not Supported" ;
+VAL_ 858 BMS_Alarm_UnderVoltage 3 "Not Supported" 2 "InActive" 1 "Active" 0 "Not Supported" ;
+VAL_ 858 BMS_Alarm_OverVoltage 3 "Not Supported" 2 "InActive" 1 "Active" 0 "Not Supported" ;
+VAL_ 858 BMS_Alarm_OverTemp 3 "Not Supported" 2 "InActive" 1 "Active" 0 "Not Supported" ;
+
