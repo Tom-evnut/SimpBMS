@@ -34,6 +34,7 @@ NS_ :
 BS_:
 
 BU_: VCU DU2 DU1 OBCharger1 BMS DCDC GTW THC
+VAL_TABLE_ Status 5 "Error" 4 "PreCharge" 3 "Charge" 2 "Drive" 1 "Ready" 0 "Boot" ;
 VAL_TABLE_ BMS_Status 5 "Error" 4 "Precharge" 3 "Charge" 2 "Drive" 1 "Ready" 0 "Boot" ;
 VAL_TABLE_ Output_States 1 "Output On" 0 "Output Off" ;
 VAL_TABLE_ AlarmWarningValues 3 "Not Supported" 2 "InActive" 1 "Active" 0 "Not Supported" ;
@@ -45,6 +46,21 @@ VAL_TABLE_ FalseTrue 1 "Active" 0 "Not Set" ;
 
 BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
  SG_ BMS_Warning_UnderTemp : 0|2@1+ (1,0) [0|3] "" Vector__XXX
+
+BO_ 889 BMS_IO_Cap: 8 Vector__XXX
+ SG_ BMS_Installed_Capacity : 0|16@1- (1,0) [0|0] "Ah" Vector__XXX
+ SG_ BMS_Status : 32|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ BMS_LowOut4 : 19|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS_LowOut3 : 18|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS_LowOut2 : 17|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS_LowOut1 : 16|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS_HighOut4 : 27|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS_HighOut3 : 26|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS_HighOut2 : 25|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS_HighOut1 : 24|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 777 BMS_Enable_Request: 8 VCU
+ SG_ Enable_Request : 0|1@1- (1,0) [0|0] ""  BMS
 
 BO_ 882 BMSinfo: 8 Vector__XXX
  SG_ BMS_Status : 32|8@1+ (1,0) [0|255] "" Vector__XXX
@@ -113,6 +129,15 @@ CM_ SG_ 858 BMS_Alarm_OverTemp "Set when a temperature sensor reading exceeds th
 BA_DEF_  "BusType" STRING ;
 BA_DEF_DEF_  "BusType" "CAN";
 VAL_ 3221225472 BMS_Warning_UnderTemp 3 "Not Supported" 2 "InActive" 1 "Active" 0 "Not Supported" ;
+VAL_ 889 BMS_Status 5 "Error" 4 "Precharge" 3 "Charge" 2 "Drive" 1 "Ready" 0 "Boot" ;
+VAL_ 889 BMS_LowOut4 1 "Output On" 0 "Output Off" ;
+VAL_ 889 BMS_LowOut3 1 "Output On" 0 "Output Off" ;
+VAL_ 889 BMS_LowOut2 1 "Output On" 0 "Output Off" ;
+VAL_ 889 BMS_LowOut1 1 "Output On" 0 "Output Off" ;
+VAL_ 889 BMS_HighOut4 1 "Output On" 0 "Output Off" ;
+VAL_ 889 BMS_HighOut3 1 "Output On" 0 "Output Off" ;
+VAL_ 889 BMS_HighOut2 1 "Output On" 0 "Output Off" ;
+VAL_ 889 BMS_HighOut1 1 "Output On" 0 "Output Off" ;
 VAL_ 882 BMS_Status 5 "Error" 4 "Precharge" 3 "Charge" 2 "Drive" 1 "Ready" 0 "Boot" ;
 VAL_ 882 BMS_LowOut4 1 "Output On" 0 "Output Off" ;
 VAL_ 882 BMS_LowOut3 1 "Output On" 0 "Output Off" ;
